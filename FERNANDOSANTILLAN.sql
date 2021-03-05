@@ -1,9 +1,11 @@
 exec spAddPersonal '45299668','Santillan','Varas','Fernando','Diego','06/09/1988','06/04/2009'
-exec spActualizarPersonal  '75262305','Santilla  n','Varas','Fernando','Alnso','06/09/1988','06/04/2009'
+exec spActualizarPersonal  '45263240','Santilla  n','Varas','Fernando','Alnso','06/09/1988','06/04/2009'
 go
+exec spAddHijos 'Santillan','Varas','Fernando','Diego','06/09/1988','45299668'
+exec spActualizarPersonal  '75262305','Santilla  n','Varas','Fernando','Alnso','06/09/1988','06/04/2009'
 
 select * from PERSONAL
-/* aqui comienza el script */
+/* aqui comienza el script */	
 USE MASTER
 GO
 CREATE DATABASE FERNANDOSANTILLAN
@@ -60,6 +62,7 @@ AS
 		NombreCompleto = @Nombre1 + SPACE(1) + @Nombre2,
 		FchNac = @FchNac,
 		FchIngreso = @FchIngreso
+		where IdPersonal=@IdPersonal
 
 	END
 GO
@@ -79,7 +82,7 @@ AS
 		FROM PERSONAL
 		ORDER BY NombreCompleto
 	END
-
+GO
 CREATE TABLE HIJOS(
 		IdDerhab INT IDENTITY(1,1) NOT NULL,
 		IdPersonal INT,
@@ -106,17 +109,20 @@ CREATE PROC spAddHijos(
 		VALUES (@ApPaterno,@ApMaterno,@Nombre1,@Nombre2,@Nombre1 + SPACE(1) + @Nombre2,@FchNac,@IdPersonal)
 	END
 GO
+
+
 CREATE PROC spActualizarHijo(
 		@ApPaterno VARCHAR(50),
 		@ApMaterno VARCHAR(50),
 		@Nombre1 VARCHAR(50),
 		@Nombre2 VARCHAR(50),
 		@FchNac DATE,
-		@IdPersonal INT
+		@IdPersonal INT,
+		@IdDerhab INT
 )
 AS
 	BEGIN
-		UPDATE HIJO
+		UPDATE HIJOS
 		SET ApPaterno= @ApPaterno,
 		ApMaterno = @ApMaterno,
 		Nombre1 = @Nombre1,
@@ -124,6 +130,7 @@ AS
 		NombreCompleto = @Nombre1 + SPACE(1) + @Nombre2,
 		FchNac = @FchNac,
 		IdPersonal = @IdPersonal
+		where IdDerhab=@IdDerhab
 
 	END
 GO

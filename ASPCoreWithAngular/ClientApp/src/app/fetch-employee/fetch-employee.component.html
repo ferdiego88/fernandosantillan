@@ -1,0 +1,36 @@
+<h1>Personal Data</h1>
+
+<p>Este componente trae la data data desde el Servidor.</p>
+
+<p *ngIf="!personalList"><em>Loading...</em></p>
+
+<p>
+    <a [routerLink]="['/register-employee']">Crear Nuevo</a>
+</p>
+
+<table class='table' *ngIf="personalList">
+    <thead>
+        <tr>
+            <th>Numero de Documento</th>
+            <th>Nombre Completo</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Fecha de Ingreso</th>
+            <th>Ver</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let personal of personalList">
+            <td>{{ personal.idPersonal }}</td>
+            <td>{{ personal.nombreCompleto + " " + personal.apPaterno + " " + personal.apMaterno }}</td>
+            <td>{{ personal.fchNac  }}</td>
+            <td>{{ personal.fchIngreso }}</td>
+            <td>Ver Hijos</td>
+            <td>
+                <td>
+                    <a [routerLink]="['/personal/edit/', personal.idPersonal]">Edit</a> |
+                    <a [routerLink]="" (click)="delete(personal.idPersonal)">Delete</a>
+                </td>
+        </tr>
+    </tbody>
+</table>

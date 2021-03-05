@@ -1,0 +1,1 @@
+exec spAddPersonal 'Santillan','Varas','Fernando','Diego','06/09/1988','06/09/2009'

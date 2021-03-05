@@ -1,0 +1,69 @@
+<h1>{{title}}</h1>
+<h3>Personal</h3>
+<hr />
+
+<form [formGroup]="personalForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+    <div class="form-group row">
+        <label class=" control-label col-md-12">Nro Documento</label>
+        <div class="col-md-4">
+            <input class="form-control" type="number" formControlName="idPersonal">
+        </div>
+        <span class="text-danger" *ngIf="idPersonal?.invalid && formDir.submitted">
+            Nro Documento es obligatorio.
+        </span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12">Primer Nombre</label>
+        <div class="col-md-4">
+            <input class="form-control" type="text" formControlName="nombre1">
+        </div>
+        <span class="text-danger" *ngIf="nombre1?.invalid && formDir.submitted">
+            Nombre es obligatorio
+        </span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12">Segundo Nombre</label>
+        <div class="col-md-4">
+            <input class="form-control" type="text" formControlName="nombre2">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12">Apellido Paterno</label>
+        <div class="col-md-4">
+            <input class="form-control" type="text" formControlName="apPaterno">
+        </div>
+        <span class="text-danger" *ngIf="apPaterno?.invalid && formDir.submitted">
+            Apellido Paterno es obligatorio
+        </span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12">Apellido Materno</label>
+        <div class="col-md-4">
+            <input class="form-control" type="text" formControlName="apMaterno">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12">Fecha Nacimiento</label>
+        <div class="col-md-4">
+            <input class="form-control" type="text" formControlName="fchNac">
+        </div>
+        <span class="text-danger" *ngIf="fchNac?.invalid && formDir.submitted">
+            Fecha de Nacimiento es obligatoria
+        </span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12">Fecha de Ingreso</label>
+        <div class="col-md-4">
+            <input class="form-control" type="text" formControlName="fchIngreso">
+        </div>
+        <span class="text-danger" *ngIf="fchIngreso?.invalid && formDir.submitted">
+            Fecha de Ingreso es obligatoria
+        </span>
+    </div>
+    <hr />
+    <div class="form-group">
+        <button type="submit" class=" btn btn-primary">Guardar</button>
+        <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+    </div>
+</form>

@@ -13,4 +13,6 @@ para poder ejecutar la Aplicacion, debemos cambiar la cadena de conexion con el 
   },
   "AllowedHosts": "*"
 }
+================================
+===============================
 "Data Source=DESKTOP-EVDMCG3\\SQLEXPRESS"

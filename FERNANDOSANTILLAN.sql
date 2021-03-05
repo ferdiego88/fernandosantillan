@@ -1,9 +1,10 @@
 exec spAddPersonal '45299668','Santillan','Varas','Fernando','Diego','06/09/1988','06/04/2009'
-exec spActualizarPersonal  '45263240','Santilla  n','Varas','Fernando','Alnso','06/09/1988','06/04/2009'
+exec spActualizarHijo '45299668','Santillan','Varas','Fernando','Diego','06/09/1988','06/04/2009'
 go
 exec spAddHijos 'Santillan','Varas','Fernando','Diego','06/09/1988','45299668'
 exec spActualizarPersonal  '75262305','Santilla  n','Varas','Fernando','Alnso','06/09/1988','06/04/2009'
 
+select * from HIJOS
 select * from PERSONAL
 /* aqui comienza el script */	
 USE MASTER
